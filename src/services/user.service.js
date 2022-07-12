@@ -3,7 +3,8 @@ export const userService = {
     getUser,
     createUser,
     logout,
-    transferCoins
+    transferCoins,
+    addMove
 }
 const STORAGE_KEY = 'user'
 let gUser = storageService.load(STORAGE_KEY) ? storageService.load(STORAGE_KEY) : null
@@ -28,6 +29,12 @@ function createUser(name) {
 }
 function transferCoins(coins) {
     gUser.coins -= coins
+    storageService.save(STORAGE_KEY, gUser)
+    return gUser
+}
+
+function addMove(move) {
+    gUser.moves.unshift(move)
     storageService.save(STORAGE_KEY, gUser)
     return gUser
 }

@@ -6,11 +6,11 @@ export default {
     mutations: {
         setUser(state, { user }) {
             state.user = user
+            console.log(state.user)
         },
     },
     actions: {
         loadUser(context) {
-            console.log(context)
             const user = userService.getUser()
             context.commit({ type: 'setUser', user })
         },
@@ -24,6 +24,10 @@ export default {
         },
         transferCoins(context, { coins }) {
             const user = userService.transferCoins(coins)
+            context.commit({ type: 'setUser', user })
+        },
+        addMove(context, { move }) {
+            const user = userService.addMove(move)
             context.commit({ type: 'setUser', user })
         }
     },

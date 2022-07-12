@@ -15,5 +15,8 @@ export default {};
   background-color: rgb(34, 34, 34);
   border-radius: 4px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

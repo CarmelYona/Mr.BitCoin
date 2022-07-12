@@ -17,13 +17,15 @@
       <TransferFund :contact="contact" :user="user" />
     </div>
   </div>
-  <p v-else>Loading..</p>
+  <div class="margin-center padding-10px">
+    <TransferHistory :user="user" />
+  </div>
 </template>
 
 <script>
-import { userService } from "../services/user.service";
 import { contactService } from "@/services/contact.service";
 import TransferFund from "../components/TransferFund.vue";
+import TransferHistory from "../components/TransferHistory.vue";
 export default {
   data() {
     return {
@@ -39,11 +41,14 @@ export default {
   async created() {
     const _id = this.$route.params._id;
     this.contact = await contactService.getById(_id);
-    const user = userService.getUser();
-    this.user = user;
-    console.log(user);
+    this.$store.dispatch({ type: "loadUser" });
   },
-  components: { TransferFund },
+  computed: {
+    user() {
+      return this.$store.getters.user;
+    },
+  },
+  components: { TransferFund, TransferHistory },
 };
 </script>
 
