@@ -1,0 +1,48 @@
+@media (max-width : 550px) {
+
+    .app-header {
+        h1 {
+            font-size: 20px;
+            width: 35%;
+
+        }
+
+        .nav-links-wrapper {
+            display: flex;
+            font-size: 10px;
+            width: 65%;
+        }
+    }
+
+    .sign-up-container {
+        width: 100%;
+    }
+
+    .contact-list {
+        .contact-preview-container {
+            .contact-wrapper {
+                .action {
+                    display: flex !important;
+
+                    a {
+                        width: 40% !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .margin-center {
+        width: 100%;
+    }
+
+    .statistic-page {
+        height: 100%;
+
+        .charts-container {
+            flex-direction: column;
+        }
+
+        .footer {}
+    }
+}
