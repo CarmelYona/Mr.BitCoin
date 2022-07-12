@@ -24,7 +24,6 @@ export default {
         },
         transferCoins(context, { coins }) {
             const user = userService.transferCoins(coins)
-            context.commit({ type: 'setUser', user })
         },
         addMove(context, { move }) {
             const user = userService.addMove(move)
