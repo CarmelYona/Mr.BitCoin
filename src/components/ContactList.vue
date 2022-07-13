@@ -79,8 +79,6 @@ export default {
         display: none;
         a {
           align-items: center;
-          width: 50%;
-          height: 50%;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -88,6 +86,10 @@ export default {
           padding: 5px;
           &:hover {
             background-color: rgb(102, 102, 101);
+          }
+          img{
+            width: 15px;
+            height: 15px;
           }
         }
         .btn-delete {
