@@ -15,10 +15,8 @@ export const contactService = {
 async function query() {
     var contacts = await dbService.query(STORAGE_KEY)
 
-    console.log(contacts)
     if (!contacts || !contacts.length) {
         contacts = _createDefaultContacts()
-        console.log(contacts)
         await dbService.insert(STORAGE_KEY, contacts)
     }
     return contacts

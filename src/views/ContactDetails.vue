@@ -16,9 +16,9 @@
       <div v-if="user"></div>
       <TransferFund :contact="contact" :user="user" />
     </div>
-  </div>
-  <div class="margin-center padding-10px">
-    <TransferHistory :user="user" />
+    <div class="transfer-history margin-center">
+      <TransferHistory :user="user" />
+    </div>
   </div>
 </template>
 
@@ -30,7 +30,6 @@ export default {
   data() {
     return {
       contact: null,
-      user: null,
     };
   },
   methods: {
@@ -75,6 +74,7 @@ export default {
       cursor: pointer;
     }
   }
+
   .contact-wrapper {
     justify-content: center;
     align-items: center;
@@ -83,6 +83,9 @@ export default {
     .contact-name {
       color: rgb(220, 110, 110);
     }
+  }
+  .transfer-history {
+    width: 100%;
   }
 }
 </style>

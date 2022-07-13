@@ -22,23 +22,17 @@ export default {
     };
   },
   props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
     contact: {
       type: Object,
       default: () => {},
     },
   },
-  created() {
-    this.loadUser();
-  },
-  computed: {
-    user() {
-      return this.$store.getters.user;
-    },
-  },
+
   methods: {
-    loadUser() {
-      this.$store.dispatch({ type: "loadUser" });
-    },
     onTransfer() {
       if (this.user.coins > 0 && this.user.coins > this.coins) {
         this.$store.dispatch({ type: "transferCoins", coins: this.coins });
