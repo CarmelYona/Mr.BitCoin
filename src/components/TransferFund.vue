@@ -37,14 +37,14 @@ export default {
       if (this.user.coins > 0 && this.user.coins > this.coins) {
         this.$store.dispatch({ type: "transferCoins", coins: this.coins });
 
-        this.addMove("approve", this.coins, this.contact.name);
+        this.addMove("approve", this.coins, this.contact);
 
         eventBus.emit("user-msg", {
           txt: `You Transfered to ${this.contact.name} ${this.coins} coins `,
           type: "success",
         });
       } else {
-        this.addMove("faile", this.coins, this.contact.name);
+        this.addMove("faile", this.coins, this.contact);
 
         eventBus.emit("user-msg", {
           txt: `You don't have enough coins`,
@@ -54,12 +54,14 @@ export default {
       this.coins = null;
     },
     addMove(status, coins, contact) {
-      // const createdAt = new Date()
+      const timeString = new Date().toLocaleTimeString();
+      const dateString = new Date().toLocaleDateString();
       const move = {
         coins,
-        to: contact,
+        to: contact.name,
+        contactId: contact._id,
         status,
-        date: new Date(),
+        date: dateString + " | " + timeString,
         _id: utilService.makeId(),
       };
       this.$store.dispatch({ type: "addMove", move });

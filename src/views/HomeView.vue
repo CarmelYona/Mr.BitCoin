@@ -1,7 +1,7 @@
 
 <template>
   <div
-    v-if="user"
+    v-if="user && user.name"
     class="user-details flex column margin-center border-5px padding-10px"
   >
     <h2>Welcome {{ user.name }}</h2>
@@ -47,6 +47,7 @@ export default {
     if (this.user) {
       this.getBtcValue();
     }
+    console.log(this.user);
   },
   computed: {
     user() {
@@ -69,6 +70,7 @@ export default {
     onLogout() {
       console.log("hi");
       this.$store.dispatch({ type: "logout" });
+      this.name = null;
     },
   },
 };

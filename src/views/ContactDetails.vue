@@ -3,7 +3,7 @@
     v-if="contact"
     class="contact-details flex column margin-center padding-10px border-5px"
   >
-    <div class="contact-header flex">
+    <div class="contact-header flex padding-10px border-5px">
       <button class="btn btn-back" @click="back">Back</button>
       <button class="btn btn-edit">
         <RouterLink :to="`/contact/edit/${contact._id}`">Edit</RouterLink>
@@ -17,15 +17,15 @@
       <TransferFund :contact="contact" :user="user" />
     </div>
     <div class="transfer-history margin-center">
-      <TransferHistory :user="user" />
+      <TransferHistory :user="user" :contact="contact" />
     </div>
   </div>
 </template>
 
 <script>
 import { contactService } from "@/services/contact.service";
-import TransferFund from "../components/TransferFund.vue";
-import TransferHistory from "../components/TransferHistory.vue";
+import TransferFund from "@/components/TransferFund.vue";
+import TransferHistory from "@/components/TransferHistory.vue";
 export default {
   data() {
     return {
@@ -60,7 +60,6 @@ export default {
   .contact-header {
     width: 100%;
     justify-content: space-between;
-    padding: 10px;
     background-color: rgba(35, 33, 33, 0.407);
     border-bottom: 3px solid rgba(35, 33, 33, 0.407);
     .btn {

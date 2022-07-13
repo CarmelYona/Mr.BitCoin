@@ -7,6 +7,9 @@ export default {
         setUser(state, { user }) {
             state.user = { ...user }
         },
+        logout(state, { user }) {
+            state.user = user
+        }
     },
     actions: {
         loadUser(context) {
@@ -19,7 +22,7 @@ export default {
         },
         logout(context) {
             userService.logout()
-            context.commit({ type: 'setUser', user: null })
+            context.commit({ type: 'logout', user: null })
         },
         transferCoins(context, { coins }) {
             const user = userService.transferCoins(coins)
